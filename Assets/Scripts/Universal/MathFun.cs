@@ -73,6 +73,16 @@ public static class MathFun
     {
         return Mathf.Sqrt(-(value * value - 1));
     }
+
+    public static int EpochTime
+    {
+        get
+        {
+            System.DateTime epochTime = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+
+            return (int)(System.DateTime.UtcNow - epochTime).TotalSeconds;
+        }
+    }
 }
 
 [System.Serializable]

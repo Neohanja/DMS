@@ -53,6 +53,7 @@ public class World : MonoBehaviour
     {
         BuildMap();
         RoomJigsaw.BuildStartDungeon(maxRooms);
+        AIManager.ActorManager.SetPlayerBase();
         Shader.SetGlobalFloat("GlobalLighting", globalLight);
     }
 

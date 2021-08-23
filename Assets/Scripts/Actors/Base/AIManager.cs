@@ -25,22 +25,28 @@ public class AIManager : MonoBehaviour
         }
 
         ActorManager = this;
-
         testSubjects = new List<Actor>();
+        aiRNG = new RanGen(MathFun.EpochTime);
     }
 
     void Start()
     {
-        aiRNG = new RanGen(World.WorldMap.worldSeed);
+        
+    }
 
-        for(int m = 0; m < initialMonsters;++m)
+    public void SetPlayerBase()
+    {
+        Vector2Int pSpawn = new Vector2Int(World.WorldMap.chunkSize / 2 - 1, World.WorldMap.chunkSize / 2 - 1);
+        List<TileMod> playerRoom = new List<TileMod>();
+        playerRoom.Add(new TileMod(pSpawn, 7, 5, 2));
+        World.WorldMap.ModTile(playerRoom);
+
+        for (int m = 0; m < initialMonsters; ++m)
         {
             int mRace = aiRNG.Roll(0, races.Length - 1);
 
-            testSubjects.Add(new Monster(CharacterBuilder.Monster(races[mRace], mRace), races[mRace]));
+            testSubjects.Add(new Monster(CharacterBuilder.Monster(races[mRace], mRace, pSpawn, 4), races[mRace]));
         }
-
-        
     }
 
     // Update is called once per frame

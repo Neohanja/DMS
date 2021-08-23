@@ -4,13 +4,13 @@ using UnityEngine;
 
 public static class CharacterBuilder
 {
-    public static ActorStats Monster(Racial race, int raceID)
+    public static ActorStats Monster(Racial race, int raceID, Vector2Int anchorPoint, int spawnRange)
     {
         ActorStats newStats = new ActorStats();
 
         newStats.actorName = "Test Subject";
 
-        newStats.seed = Random.Range(0, int.MaxValue) + 1;
+        newStats.seed = MathFun.EpochTime;
         newStats.raceIndex = raceID;
         newStats.moveSpeed = race.baseMoveSpeed;
         newStats.actorType = (int)Actor.ActorType.Monster;
@@ -21,8 +21,8 @@ public static class CharacterBuilder
 
         do
         {
-            x = prng.Roll(0, World.WorldMap.chunkSize - 1);
-            y = prng.Roll(0, World.WorldMap.chunkSize - 1);
+            x = anchorPoint.x + prng.Roll(0, spawnRange);
+            y = anchorPoint.y + prng.Roll(0, spawnRange);
         } while (AIManager.ActorManager != null && AIManager.ActorManager.SpaceOccupied(x, y));
 
         newStats.spawnLoc[0] = x + 0.5f;

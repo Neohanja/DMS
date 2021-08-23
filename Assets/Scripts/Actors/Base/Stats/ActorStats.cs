@@ -14,7 +14,7 @@ public class ActorStats
     public int rngIndex;
 
     public float moveSpeed;
-    public float runMultiplier;
+    public float runMultiplier;    
 
     public int raceIndex;
 
