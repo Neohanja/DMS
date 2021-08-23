@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f29f5bb1551b0c41a563ed9657c1ba2, type: 3}
+  m_Name: Dungeon
+  m_EditorClassIdentifier: 
+  biomeName: Dungeon
+  groundTile: 1
+  wallTile: 2
+  growth: 2
+  biomeDecor:
+  - clutterName: Caves
+    clutterScale: 12.32
+    zLoc: 15
+    tile: 0
+    threshold: 0.361
+  - clutterName: Iron Ore
+    clutterScale: 16.6
+    zLoc: 5
+    tile: 4
+    threshold: 0.326

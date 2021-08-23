@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b61cedc4bb0694e9cc2db54a34ade7, type: 3}
+  m_Name: FlagBase
+  m_EditorClassIdentifier: 
+  tileName: Flag Base
+  baseShape: {fileID: 11400000, guid: ba8b869c832ed2f419f3ff9a0cbf0275, type: 2}
+  topTexture: 10
+  bottomTexture: 10
+  northTexture: 10
+  eastTexture: 10
+  southTexture: 10
+  westTexture: 10
+  skipDraw: 0
+  solid: 1
+  drawSurrounding: 1
+  drawBottom: 0
