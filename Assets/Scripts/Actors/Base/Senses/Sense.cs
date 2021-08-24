@@ -6,6 +6,7 @@ public class Sense : MonoBehaviour
 {
     protected static float fovCheckInterval = 0.05f;
     protected Actor identity;
+    protected CapsuleCollider myBubble;
 
     protected float radius;
     protected float elapsedTime;

@@ -23,7 +23,8 @@ public class Chunk
         chunkType = genType;
         neighbors = new Chunk[4];
 
-        chunkObj = new GameObject(" Chunk");
+        chunkObj = new GameObject("Chunk");
+        chunkObj.layer = 6;
         chunkObj.transform.SetParent(worldMap.transform);
         chunkObj.transform.position = new Vector3(location.x * cSize, 0f, location.y * cSize);
 

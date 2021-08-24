@@ -178,7 +178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873752456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16, y: 10, z: 16}
+  m_LocalPosition: {x: 32, y: 10, z: 24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkSize: 64
   worldSeed: 12
-  randomSeed: 0
+  randomSeed: 1
   terrainMat: {fileID: 2100000, guid: dd6860bc58123774699972c70d406973, type: 2}
   textureRows: 4
   worldGen: {fileID: 11400000, guid: 8c2da22d422803b43b6ea3ba03ce4393, type: 2}

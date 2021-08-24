@@ -163,6 +163,11 @@ public class World : MonoBehaviour
             rebuildMap = false;
         }
 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("World");
+        }
+
         if (globalLight != previousLight)
         {
             Shader.SetGlobalFloat("GlobalLighting", globalLight);
