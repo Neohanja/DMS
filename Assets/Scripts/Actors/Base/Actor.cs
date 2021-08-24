@@ -8,6 +8,9 @@ public class Actor
     public GameObject actorMain;
     protected StateManager stateMachine;
     protected Movement actorController;
+    protected List<GameObject> sensory;
+
+    //Model and Physics
     protected GameObject actorModel;
     protected CapsuleCollider actorCollision;
     protected Rigidbody actorRigidbody;
@@ -15,21 +18,21 @@ public class Actor
     protected MeshRenderer actorRender;
 
     //Individual Actor data
-    protected ActorStats stats;
-    protected Racial race;
+    public EntityType actorStats;
     protected RanGen actorRNG;
     protected ActorType actorType;
 
-    public Actor(ActorStats characterSheet, Racial baseRace)
+    public Actor(ActorStats characterSheet)
     {
-        stats = characterSheet;
-        race = baseRace;
+        //stats = characterSheet;        
 
-        actorRNG = new RanGen(stats.seed);
-        actorType = (ActorType)stats.actorType;
-        actorMain = new GameObject(stats.actorName);
+        actorRNG = new RanGen(characterSheet.seed);
+        actorType = (ActorType)characterSheet.actorType;
+        actorMain = new GameObject(characterSheet.actorName);
 
         //Add the various components
+        actorStats = actorMain.AddComponent<EntityType>();
+        actorStats.stats = characterSheet;
         stateMachine = actorMain.AddComponent<StateManager>();
 
         //Add the Switch here for "Actor Type"
@@ -37,6 +40,7 @@ public class Actor
         {
             case ActorType.Monster:
                 actorController = actorMain.AddComponent<MonMovement>();
+                actorStats.entityType = EntityType.EntityID.Monster;
                 break;
             default:
                 actorController = actorMain.AddComponent<Movement>();
@@ -45,12 +49,13 @@ public class Actor
 
 
         SetupMesh();
-        
-        actorController.SetSpawn(stats.SpawnPoint);
-        actorController.SetStats(this, stats);
+
+        actorController.SetSpawn(actorStats.stats.SpawnPoint);
+        actorController.SetStats(this, actorStats.stats);        
 
         AddColliders();
         BuildStateMachine();
+        BuildSensoryData();
     }
 
     /// <summary>
@@ -59,6 +64,41 @@ public class Actor
     protected virtual void BuildStateMachine()
     {
         
+    }
+
+    protected virtual void BuildSensoryData()
+    {
+        sensory = new List<GameObject>();
+
+        if(actorStats.stats.race.sight > 0)
+        {
+            GameObject sightObj = new GameObject("Sight");
+            Sight sight = sightObj.AddComponent<Sight>();
+            sight.InitializeSense(actorStats.stats.race.sight, 0.5f, 45, this);
+            sightObj.transform.SetParent(actorMain.transform);
+            sightObj.transform.position = actorMain.transform.position;
+            sensory.Add(sightObj);
+        }
+
+        if(actorStats.stats.race.hearing > 0)
+        {
+            GameObject hearingObj = new GameObject("Hearing");
+            Hear hearing = hearingObj.AddComponent<Hear>();
+            hearing.InitializeSense(actorStats.stats.race.hearing, 0.5f, 45, this);
+            hearingObj.transform.SetParent(actorMain.transform);
+            hearingObj.transform.position = actorMain.transform.position;
+            sensory.Add(hearingObj);
+        }
+
+        if(actorStats.stats.race.smell > 0)
+        {
+            GameObject smellObj = new GameObject("Smell");
+            Smell smell = smellObj.AddComponent<Smell>();
+            smell.InitializeSense(actorStats.stats.race.smell, 0.5f, 45, this);
+            smellObj.transform.SetParent(actorMain.transform);
+            smellObj.transform.position = actorMain.transform.position;
+            sensory.Add(smellObj);
+        }
     }
 
     protected virtual void AddColliders()
@@ -78,13 +118,13 @@ public class Actor
         actorMesh = actorModel.AddComponent<MeshFilter>();
         actorRender = actorModel.AddComponent<MeshRenderer>();
 
-        actorMesh.mesh = race.baseMesh;
+        actorMesh.mesh = actorStats.stats.race.baseMesh;
         actorRender.material = AIManager.ActorManager.baseMaterial;
-        actorRender.material.mainTexture = race.skins[0];
+        actorRender.material.mainTexture = actorStats.stats.race.skins[0];
 
         //Temp stuff, until actual models are put in.
-        actorModel.transform.position += Vector3.up * race.height;
-        actorModel.transform.localScale *= race.height;
+        actorModel.transform.position += Vector3.up * actorStats.stats.race.height;
+        actorModel.transform.localScale *= actorStats.stats.race.height;
         //End Temp Stuff
     }
 

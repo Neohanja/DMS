@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class Sense : MonoBehaviour
 {
-    protected static float fovCheckInterval = 0.05f; 
+    protected static float fovCheckInterval = 0.05f;
+    protected Actor identity;
 
-    protected int radius;
+    protected float radius;
     protected float elapsedTime;
     protected float checkTimer;
-    protected float fieldOfView; 
+    protected float fieldOfView;
 
-    public virtual void InitializeSense(int range, float checkInterval, float fov)
+    public SensoryTrigger SensoryTriggered;
+
+    public virtual void InitializeSense(float range, float checkInterval, float fov, Actor actor)
     {
         radius = range;
         checkTimer = checkInterval;
-        fieldOfView = fov / 2f;
+        fieldOfView = fov / 90f;
+        identity = actor;
     }
 
     void Update()
@@ -56,4 +60,14 @@ public class Sense : MonoBehaviour
     {
 
     }
+}
+
+[System.Serializable]
+public class SensoryTrigger
+{
+    public string entityName;
+    public int entityID;
+    public bool isTriggered;
+    public Vector3 triggerLocation;
+    public EntityType triggerEntity;
 }

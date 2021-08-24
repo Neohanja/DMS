@@ -9,6 +9,7 @@ public class AIManager : MonoBehaviour
     public Material baseMaterial;
 
     public List<Vector2Int> playerBaseFlag;
+    public List<int> usedIDs;
 
     public List<Actor> testSubjects;
     public int initialMonsters;
@@ -43,9 +44,16 @@ public class AIManager : MonoBehaviour
 
         for (int m = 0; m < initialMonsters; ++m)
         {
-            int mRace = aiRNG.Roll(0, races.Length - 1);
+            int mRace = aiRNG.RandomIndex(races.Length);
 
-            testSubjects.Add(new Monster(CharacterBuilder.Monster(races[mRace], mRace, pSpawn, 4), races[mRace]));
+            int mID;
+
+            do
+            {
+                mID = aiRNG.RandomIndex(int.MaxValue);
+            } while (usedIDs.Contains(mID));
+
+            testSubjects.Add(new Monster(CharacterBuilder.Monster(races[mRace], mID, pSpawn, 4)));
         }
     }
 

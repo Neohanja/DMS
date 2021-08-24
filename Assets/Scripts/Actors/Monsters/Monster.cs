@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Monster : Actor
 {
-    public Monster(ActorStats characterSheet, Racial race) : base(characterSheet, race)
+    public Monster(ActorStats characterSheet) : base(characterSheet)
     {
 
     }

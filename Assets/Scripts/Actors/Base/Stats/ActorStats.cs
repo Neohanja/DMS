@@ -16,17 +16,17 @@ public class ActorStats
     public float moveSpeed;
     public float runMultiplier;    
 
-    public int raceIndex;
+    public Racial race;
 
 
-    public ActorStats(Vector3 spawn, int seedID, Actor.ActorType actorID, int raceID)
+    public ActorStats(Vector3 spawn, int seedID, Actor.ActorType actorID, Racial raceID)
     {
         transform = new float[3] { spawn.x, spawn.y, spawn.z };
         spawnLoc = new float[3] { spawn.x, spawn.y, spawn.z };
         seed = seedID;
         actorType = (int)actorID;
         rngIndex = 1;
-        raceIndex = raceID;
+        race = raceID;
     }
 
     public ActorStats()
@@ -36,7 +36,7 @@ public class ActorStats
         seed = 0;
         actorType = 0;
         rngIndex = 1;
-        raceIndex = 0;
+        race = null;
     }
 
     public void UpdatePosition(Vector3 position)

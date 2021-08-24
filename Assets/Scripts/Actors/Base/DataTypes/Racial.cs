@@ -15,6 +15,12 @@ public class Racial : ScriptableObject
     public Mesh baseMesh;
     public Texture[] skins;
 
+    public string[] genericNames;
+
+    public float sight;
+    public float hearing;
+    public float smell;
+
     public enum RaceType
     {
         Normal,
@@ -22,4 +28,6 @@ public class Racial : ScriptableObject
         Demon,
         Fairy
     }
+
+    
 }

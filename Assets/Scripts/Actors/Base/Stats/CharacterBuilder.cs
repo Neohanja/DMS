@@ -4,18 +4,25 @@ using UnityEngine;
 
 public static class CharacterBuilder
 {
-    public static ActorStats Monster(Racial race, int raceID, Vector2Int anchorPoint, int spawnRange)
+    public static ActorStats Monster(Racial race, int seedID, Vector2Int anchorPoint, int spawnRange)
     {
         ActorStats newStats = new ActorStats();
 
-        newStats.actorName = "Test Subject";
-
-        newStats.seed = MathFun.EpochTime;
-        newStats.raceIndex = raceID;
+        newStats.seed = seedID;
+        newStats.race = race;
         newStats.moveSpeed = race.baseMoveSpeed;
         newStats.actorType = (int)Actor.ActorType.Monster;
 
         RanGen prng = new RanGen(newStats.seed);
+
+        if(race.genericNames != null && race.genericNames.Length > 0)
+        {
+            newStats.actorName = race.genericNames[prng.RandomIndex(race.genericNames.Length)];
+        }
+        else
+        {
+            newStats.actorName = race.raceName;
+        }
 
         int x, y;
 

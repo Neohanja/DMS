@@ -20,3 +20,32 @@ MonoBehaviour:
   baseMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   skins:
   - {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+  genericNames:
+  - Bob
+  - Test Subject
+  - Failure
+  - Rising Star
+  - Potential
+  - Hopeless
+  - Hopeful
+  - Irony
+  - Oh no
+  - Ken
+  - Bella
+  - Mikey
+  - Tristan
+  - Darius
+  - George
+  - Alex
+  - Elli
+  - Millie
+  - Jamie
+  - Allie
+  - Meg
+  - Ball Catcher
+  - Face Smasher
+  - Paradise
+  - Cesspool
+  sight: 3
+  hearing: 2
+  smell: 1

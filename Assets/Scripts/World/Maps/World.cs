@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class World : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class World : MonoBehaviour
     public RanGen worldRNG;
     public int chunkSize;
     public int worldSeed;
+    public bool randomSeed;
     public Dictionary<Vector2Int, Chunk> chunkMap;
     protected Dictionary<Vector2Int, List<TileMod>> addChunkMods;
     public List<Chunk> activeChunks;
@@ -40,6 +42,11 @@ public class World : MonoBehaviour
         else
         {
             WorldMap = this;
+        }
+
+        if(randomSeed)
+        {
+            worldSeed = RanGen.PullNumber(42, MathFun.EpochTime);
         }
 
         chunkMap = new Dictionary<Vector2Int, Chunk>();
@@ -86,7 +93,7 @@ public class World : MonoBehaviour
 
     protected Chunk.ChunkType GetChunkType(Vector2Int location)
     {
-        if (location.x == 0 && location.y == 0) return Chunk.ChunkType.Cave;
+        //if (location.x == 0 && location.y == 0) return Chunk.ChunkType.Cave;
         if (location.y > 0) return Chunk.ChunkType.Outside;
         return Chunk.ChunkType.Underground;
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EntityType : MonoBehaviour
 {
     public EntityID entityType;
+    public ActorStats stats;
 
     public enum EntityID
     {

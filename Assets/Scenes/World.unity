@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMaterial: {fileID: 2100000, guid: 0d83fca0d3f78c64290c45d8e2305e7f, type: 2}
   playerBaseFlag: []
+  usedIDs: 
   initialMonsters: 3
   defaultStats:
     actorName: Default
@@ -362,7 +363,7 @@ MonoBehaviour:
     rngIndex: 1
     moveSpeed: 2
     runMultiplier: 1.5
-    raceIndex: 0
+    race: {fileID: 0}
   races:
   - {fileID: 11400000, guid: dd216fd05f83ccb499964c0b27e89c21, type: 2}
 --- !u!4 &1342136678
@@ -453,7 +454,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkSize: 64
-  worldSeed: 0
+  worldSeed: 12
+  randomSeed: 0
   terrainMat: {fileID: 2100000, guid: dd6860bc58123774699972c70d406973, type: 2}
   textureRows: 4
   worldGen: {fileID: 11400000, guid: 8c2da22d422803b43b6ea3ba03ce4393, type: 2}

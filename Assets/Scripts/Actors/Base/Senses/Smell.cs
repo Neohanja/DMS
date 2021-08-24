@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hear : Sense
+public class Smell : Sense
 {
     public override void InitializeSense(float range, float checkInterval, float fov, Actor actor)
     {
