@@ -26,7 +26,7 @@ public class Hear : Sense
 
         if(otherActor != null)
         {
-            Debug.Log(transform.parent.gameObject.name + " hears " + other.gameObject.name + "!");
+            //Debug.Log(transform.parent.gameObject.name + " hears " + other.gameObject.name + "!");
         }
     }
 }
