@@ -15,11 +15,11 @@ C:/Users/canun/Desktop/DMS
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58107
+60723
 Successfully changed project path to: C:/Users/canun/Desktop/DMS
 C:/Users/canun/Desktop/DMS
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 128.17 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 88.91 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.0f1 (61a549675243)
 [Subsystems] Discovering subsystems at path D:/Unity/2021.1.0f1/Editor/Data/Resources/UnitySubsystems
@@ -36,33 +36,33 @@ Initialize mono
 Mono path[0] = 'D:/Unity/2021.1.0f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity/2021.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Unity/2021.1.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56800
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56260
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Unity/2021.1.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: D:/Unity/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001482 seconds.
+Registered in 0.001530 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 99.48 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 95.90 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  4.286 seconds
+- Completed reload, in  2.154 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003914 seconds.
+Registered in 0.003810 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 98.32 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 92.63 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.179 seconds
+- Completed reload, in  1.084 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
 Refreshing native plugins compatible for Editor in 0.61 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3993 Unused Serialized files (Serialized files now loaded: 0)
@@ -70,257 +70,183 @@ System memory in use before: 154.6 MB.
 System memory in use after: 154.8 MB.
 
 Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 4447.
-Total: 2.514800 ms (FindLiveObjects: 0.271900 ms CreateObjectMapping: 0.186000 ms MarkObjects: 1.923200 ms  DeleteObjects: 0.132500 ms)
+Total: 2.810800 ms (FindLiveObjects: 0.355000 ms CreateObjectMapping: 0.371300 ms MarkObjects: 1.963200 ms  DeleteObjects: 0.120500 ms)
 
 ========================================================================
 Received Import Request.
   path: Assets/GameObjects/Races/Kobold.asset
   artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8158fe5ac1c748fd906d4d4edde2a4d') in 0.061109 seconds 
+Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '340c166009af293944ac76556395c0b8') in 0.041743 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 21.032301 seconds.
+  Time since last request: 0.000279 seconds.
+  path: Assets/GameObjects/Races/Human.asset
+  artifactKey: Guid(dd216fd05f83ccb499964c0b27e89c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameObjects/Races/Human.asset using Guid(dd216fd05f83ccb499964c0b27e89c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7692638bcaa016e33bed6710b099863c') in 0.007941 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 61.158205 seconds.
+  path: Assets/GameObjects/Races/Human.asset
+  artifactKey: Guid(dd216fd05f83ccb499964c0b27e89c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameObjects/Races/Human.asset using Guid(dd216fd05f83ccb499964c0b27e89c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5352ffa8bce121c26526ccec7dbc4a53') in 0.002845 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 22.001470 seconds.
+  path: Assets/GameObjects/Races/Human.asset
+  artifactKey: Guid(dd216fd05f83ccb499964c0b27e89c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameObjects/Races/Human.asset using Guid(dd216fd05f83ccb499964c0b27e89c21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '961beafe1e02b919ff48aeb0599c1ef2') in 0.002657 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 188.477746 seconds.
+  path: Assets/GameObjects/Races/Kobold.asset
+  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0161859d5cb647675065c4e6077bf3af') in 0.003015 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 107.985933 seconds.
+  path: Assets/GameObjects/Races/Kobold.asset
+  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8802cb582b887d8321d9fe71206da2f') in 0.003028 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 175.061626 seconds.
   path: Assets/Models/Puck.blend
   artifactKey: Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Puck.blend using Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9924f7b2c1478a0a5dee343c2dd1917') in 0.554737 seconds 
+Start importing Assets/Models/Puck.blend using Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e33c3138766e6c8bae4f828fa9733573') in 0.208679 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 225.827855 seconds.
-  path: Assets/GameObjects/Races/Kobold.asset
-  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec85dd2bd9cbfe13049c4c5535678932') in 0.005911 seconds 
+  Time since last request: 1234.621848 seconds.
+  path: Assets/Models
+  artifactKey: Guid(3edd0179a8908d043a26b00c93916bc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models using Guid(3edd0179a8908d043a26b00c93916bc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39a35c33acc56265a3168d4b9daf4bba') in 0.009830 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.980271 seconds.
+  path: Assets/Models/References
+  artifactKey: Guid(fdf068d011a501e4b878e442e0877d0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/References using Guid(fdf068d011a501e4b878e442e0877d0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cf76877395e1cd90f28490bf11b5b48') in 0.008456 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4365.037364 seconds.
+  path: Assets/Models/References/Kobold_Brew.png
+  artifactKey: Guid(68bd88d9d4e9e6243ba11ca79deb4947) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/References/Kobold_Brew.png using Guid(68bd88d9d4e9e6243ba11ca79deb4947) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94c33557b24228743233265851791ae6') in 0.059324 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000222 seconds.
+  path: Assets/Models/References/Kobold_Mining.png
+  artifactKey: Guid(474ee20960f935e4fbf6c08a74ebd272) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/References/Kobold_Mining.png using Guid(474ee20960f935e4fbf6c08a74ebd272) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d50c111130cbd6e5e80f42b034a3349') in 0.016874 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000294 seconds.
+  path: Assets/Models/References/Kobold_Relax.png
+  artifactKey: Guid(8fa0dbe0c02935e468b11230dff1e066) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/References/Kobold_Relax.png using Guid(8fa0dbe0c02935e468b11230dff1e066) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '948fb82de335d024c9c8463cb1d61760') in 0.021629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.805821 seconds.
+  path: Assets/Models/Puck.blend
+  artifactKey: Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Puck.blend using Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '014f23a810622bd33785b3d24b96f5f1') in 0.046445 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003875 seconds.
+Registered in 0.003653 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.99 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.20 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.304 seconds
+- Completed reload, in  1.110 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.98 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.72 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.7 MB.
-System memory in use after: 155.9 MB.
+Unloading 3918 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 157.2 MB.
+System memory in use after: 157.4 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 4499.
-Total: 4.418900 ms (FindLiveObjects: 0.575800 ms CreateObjectMapping: 0.434500 ms MarkObjects: 3.317200 ms  DeleteObjects: 0.088700 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 4547.
+Total: 3.414600 ms (FindLiveObjects: 0.328500 ms CreateObjectMapping: 0.226500 ms MarkObjects: 2.750900 ms  DeleteObjects: 0.107800 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 221.570549 seconds.
-  path: Assets/GameObjects/Races/Kobold.asset
-  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '476ac6161cc76f4792b3c69c8f22d028') in 0.020972 seconds 
+  Time since last request: 128.437014 seconds.
+  path: Assets/Models/Puck.blend
+  artifactKey: Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Puck.blend using Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4450ca9e01abdcb0245f44563fc94d9f') in 0.193435 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003389 seconds.
+Registered in 0.003312 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.77 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.068 seconds
+- Completed reload, in  1.011 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.8 MB.
-System memory in use after: 156.0 MB.
+System memory in use before: 157.1 MB.
+System memory in use after: 157.4 MB.
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 4502.
-Total: 5.423400 ms (FindLiveObjects: 0.761000 ms CreateObjectMapping: 0.540200 ms MarkObjects: 4.014500 ms  DeleteObjects: 0.106000 ms)
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4586.
+Total: 3.575300 ms (FindLiveObjects: 0.460700 ms CreateObjectMapping: 0.347400 ms MarkObjects: 2.711400 ms  DeleteObjects: 0.054900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 54.639967 seconds.
+  path: Assets/Models/Puck.blend
+  artifactKey: Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Puck.blend using Guid(ef2ba8aeac5f9254a934c204d4796834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '671028a40115fa55c823be9067520bf8') in 0.177964 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004057 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.010 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 157.3 MB.
+System memory in use after: 157.5 MB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4625.
+Total: 3.555300 ms (FindLiveObjects: 0.406200 ms CreateObjectMapping: 0.240200 ms MarkObjects: 2.846800 ms  DeleteObjects: 0.060500 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004610 seconds.
+Registered in 0.003448 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.038 seconds
+- Completed reload, in  1.036 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.8 MB.
-System memory in use after: 156.0 MB.
-
-Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4505.
-Total: 3.633600 ms (FindLiveObjects: 0.567200 ms CreateObjectMapping: 0.436000 ms MarkObjects: 2.534500 ms  DeleteObjects: 0.093000 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 600.454522 seconds.
-  path: Assets/GameObjects/Races/Kobold.asset
-  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5359a5d626db912ef4502449103506a6') in 0.019148 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 66.919751 seconds.
-  path: Assets/GameObjects/Races/Kobold.asset
-  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fc98cb8348f38a189b389c9d3bbc205') in 0.004218 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 239.174137 seconds.
-  path: Assets/GameObjects/Races/Kobold.asset
-  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbc27fff8dc7fb3c08cc716907a01418') in 0.004016 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 92.194427 seconds.
-  path: Assets/GameObjects/Races/Kobold.asset
-  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c402462d925ecf97d9d5e401276043a6') in 0.009491 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.235596 seconds.
-  path: Assets/GameObjects/Races/Kobold.asset
-  artifactKey: Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GameObjects/Races/Kobold.asset using Guid(d5c997bf2e4d5354f8e725f708cbe665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59fedd8ac179fce06ab6f1754c87f66b') in 0.003409 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003483 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.65 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.031 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.8 MB.
-System memory in use after: 156.1 MB.
-
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 4508.
-Total: 2.598700 ms (FindLiveObjects: 0.414800 ms CreateObjectMapping: 0.213000 ms MarkObjects: 1.845200 ms  DeleteObjects: 0.121600 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003299 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.153 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.97 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.9 MB.
-System memory in use after: 156.1 MB.
-
-Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4511.
-Total: 4.118400 ms (FindLiveObjects: 0.831600 ms CreateObjectMapping: 0.467400 ms MarkObjects: 2.753900 ms  DeleteObjects: 0.064400 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004067 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 0.61 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.128 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.9 MB.
-System memory in use after: 156.1 MB.
+System memory in use before: 157.3 MB.
+System memory in use after: 157.5 MB.
 
-Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4514.
-Total: 3.434800 ms (FindLiveObjects: 0.314500 ms CreateObjectMapping: 0.183600 ms MarkObjects: 2.828900 ms  DeleteObjects: 0.106100 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005482 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.72 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.081 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.9 MB.
-System memory in use after: 156.1 MB.
-
-Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4517.
-Total: 2.678900 ms (FindLiveObjects: 0.381100 ms CreateObjectMapping: 0.287800 ms MarkObjects: 1.915200 ms  DeleteObjects: 0.093900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004064 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.085 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.65 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.9 MB.
-System memory in use after: 156.1 MB.
-
-Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4520.
-Total: 4.322600 ms (FindLiveObjects: 0.643800 ms CreateObjectMapping: 0.372100 ms MarkObjects: 3.244200 ms  DeleteObjects: 0.060300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003677 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.79 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.995 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.73 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 155.9 MB.
-System memory in use after: 156.1 MB.
-
-Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4523.
-Total: 6.966600 ms (FindLiveObjects: 0.651000 ms CreateObjectMapping: 0.553100 ms MarkObjects: 5.640300 ms  DeleteObjects: 0.120800 ms)
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 4628.
+Total: 3.641200 ms (FindLiveObjects: 0.350600 ms CreateObjectMapping: 0.232200 ms MarkObjects: 2.999900 ms  DeleteObjects: 0.057500 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

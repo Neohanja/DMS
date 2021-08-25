@@ -17,7 +17,7 @@ MonoBehaviour:
   baseMoveSpeed: 3
   height: 0.45
   width: 0.25
-  baseMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  baseMesh: {fileID: 8034487648634851235, guid: ef2ba8aeac5f9254a934c204d4796834, type: 3}
   skins:
   - {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
   genericNames:
@@ -50,6 +50,10 @@ MonoBehaviour:
   - Zehenangreifer
   - Schnuffler
   - Nichtswurdig
+  - Einscheiss
+  - Ershreckt
+  - Verurteilt
+  - Staubsauger
   sight: 5
   hearing: 3
   smell: 2

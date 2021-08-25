@@ -22,14 +22,13 @@ MonoBehaviour:
   - {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
   genericNames:
   - Bob
-  - Test Subject
-  - Failure
-  - Rising Star
-  - Potential
-  - Hopeless
-  - Hopeful
-  - Irony
-  - Oh no
+  - Higgins
+  - Salmont
+  - Craig
+  - Keith
+  - Kate
+  - Elli
+  - Tanner
   - Ken
   - Bella
   - Mikey
@@ -37,15 +36,16 @@ MonoBehaviour:
   - Darius
   - George
   - Alex
-  - Elli
   - Millie
   - Jamie
+  - Ryder
   - Allie
   - Meg
-  - Ball Catcher
-  - Face Smasher
-  - Paradise
-  - Cesspool
+  - James
+  - Charlie
+  - Billy
+  - Doug
+  - Peter
   sight: 3
   hearing: 2
   smell: 1
