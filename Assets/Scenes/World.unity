@@ -365,6 +365,7 @@ MonoBehaviour:
     runMultiplier: 1.5
     race: {fileID: 0}
   races:
+  - {fileID: 11400000, guid: d5c997bf2e4d5354f8e725f708cbe665, type: 2}
   - {fileID: 11400000, guid: dd216fd05f83ccb499964c0b27e89c21, type: 2}
 --- !u!4 &1342136678
 Transform:

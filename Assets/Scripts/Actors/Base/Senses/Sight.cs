@@ -13,7 +13,7 @@ public class Sight : Sense
     {
         for (float i = -fieldOfView; i <= fieldOfView; i += fovCheckInterval)
         {
-            //Ray fovPointer = new Ray(transform.position + new Vector3(0, identity))
+            //Ray fovPointer = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward + new Vector3)
         }
 
         return base.EntityFound();

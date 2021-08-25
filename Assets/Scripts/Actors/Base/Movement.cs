@@ -100,6 +100,10 @@ public class Movement : MonoBehaviour
     public void SetDirection(Vector3 direction)
     {
         momentum = direction.normalized;
+
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, momentum, moveSpeed, 0f);
+        Debug.DrawRay(transform.position, newDirection, Color.red);
+        transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
     // Start is called before the first frame update
