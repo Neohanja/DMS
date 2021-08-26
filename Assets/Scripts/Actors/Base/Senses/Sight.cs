@@ -11,9 +11,11 @@ public class Sight : Sense
         Vector3 rayDirection = other.transform.position - transform.position;
         if(Vector3.Angle(rayDirection, transform.parent.transform.forward) < fieldOfView)
         {
+            int layerMask = 1 << 6;
+            float distanceCheck = Vector3.Distance(other.transform.position, transform.position);
             RaycastHit hit;
 
-            if (Physics.Raycast(transform.position + offset, rayDirection + offset, out hit, radius))
+            if (Physics.Raycast(transform.position + offset, rayDirection + offset, out hit, distanceCheck, layerMask))
             {
                 if (hit.collider.gameObject.name == "Chunk") return;
             }

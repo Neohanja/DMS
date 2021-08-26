@@ -17,7 +17,7 @@ public class Sense : MonoBehaviour
     {
         radius = range;
         fieldOfView = fov;
-        fovCheckInterval = fov / 5f;
+        fovCheckInterval = fov / 3f;
         identity = actor;
 
         myBubble = gameObject.AddComponent<CapsuleCollider>();
