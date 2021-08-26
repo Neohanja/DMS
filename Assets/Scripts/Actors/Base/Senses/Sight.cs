@@ -2,35 +2,38 @@ using UnityEngine;
 
 public class Sight : Sense
 {
-    public override void InitializeSense(float range, float checkInterval, float fov, Actor actor)
+    Vector3 offset = new Vector3(0, 0.1f, 0);
+
+    private void OnTriggerStay(Collider other)
     {
-        base.InitializeSense(range, checkInterval, fov, actor);
+        if (other.gameObject.name == "Chunk") return;
 
-
-    }
-
-    protected override EntityType.EntityID EntityFound()
-    {
-        for (float i = -fieldOfView; i <= fieldOfView; i += fovCheckInterval)
+        Vector3 rayDirection = other.transform.position - transform.position;
+        if(Vector3.Angle(rayDirection, transform.parent.transform.forward) < fieldOfView)
         {
-            Ray fovPointer = new Ray(transform.position + new Vector3(0, 0.1f, 0), 
-                transform.forward + new Vector3(i, MathFun.PointOnCircle(i)));
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position + offset, rayDirection + offset, out hit, radius))
+            {
+                if (hit.collider.gameObject.name == "Chunk") return;
+            }
+
+            EntityType otherActor = other.gameObject.GetComponent<EntityType>();
+
+            if (otherActor != null)
+            {
+                Debug.Log(transform.parent.gameObject.name + " sees " + other.gameObject.name + "!");
+            }
         }
-
-        return base.EntityFound();
-    }
-
-    protected override void OnSenseTrigger(EntityType.EntityID entityFound)
-    {
-        
     }
 
     private void OnDrawGizmos()
     {
+        Vector3 frontRay = transform.forward * radius + offset;
+
         for (float i = -fieldOfView; i <= fieldOfView; i += fovCheckInterval)
         {
-            Debug.DrawRay(transform.position + new Vector3(0, 0.1f, 0),
-                transform.forward - new Vector3(i, transform.position.y + 0.1f, MathFun.PointOnCircle(i)), Color.red);
+            Debug.DrawRay(transform.position + offset, Quaternion.Euler(0, i, 0) * frontRay, Color.red);
         }
     }
 }

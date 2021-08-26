@@ -74,7 +74,7 @@ public class Actor
         {
             GameObject sightObj = new GameObject("Sight");
             Sight sight = sightObj.AddComponent<Sight>();
-            sight.InitializeSense(actorStats.stats.race.sight, 0.5f, 45, this);
+            sight.InitializeSense(actorStats.stats.race.sight, 45, this);
             sightObj.transform.SetParent(actorMain.transform);
             sightObj.transform.position = actorMain.transform.position;
             sensory.Add(sightObj);
@@ -84,7 +84,7 @@ public class Actor
         {
             GameObject hearingObj = new GameObject("Hearing");
             Hear hearing = hearingObj.AddComponent<Hear>();
-            hearing.InitializeSense(actorStats.stats.race.hearing, 0.5f, 45, this);
+            hearing.InitializeSense(actorStats.stats.race.hearing, 45, this);
             hearingObj.transform.SetParent(actorMain.transform);
             hearingObj.transform.position = actorMain.transform.position;
             sensory.Add(hearingObj);
@@ -94,7 +94,7 @@ public class Actor
         {
             GameObject smellObj = new GameObject("Smell");
             Smell smell = smellObj.AddComponent<Smell>();
-            smell.InitializeSense(actorStats.stats.race.smell, 0.5f, 45, this);
+            smell.InitializeSense(actorStats.stats.race.smell, 45, this);
             smellObj.transform.SetParent(actorMain.transform);
             smellObj.transform.position = actorMain.transform.position;
             sensory.Add(smellObj);
