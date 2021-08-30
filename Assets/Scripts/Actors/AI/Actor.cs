@@ -22,6 +22,9 @@ public class Actor
     protected RanGen actorRNG;
     protected ActorType actorType;
 
+    protected bool busy;
+    public bool IsBusy { get { return busy; } }
+
     public Actor(ActorStats characterSheet)
     {
         //stats = characterSheet;        
@@ -34,18 +37,7 @@ public class Actor
         actorStats = actorMain.AddComponent<EntityType>();
         actorStats.stats = characterSheet;
         stateMachine = actorMain.AddComponent<StateManager>();
-
-        //Add the Switch here for "Actor Type"
-        switch(actorType)
-        {
-            case ActorType.Monster:
-                actorController = actorMain.AddComponent<MonMovement>();
-                actorStats.entityType = EntityType.EntityID.Monster;
-                break;
-            default:
-                actorController = actorMain.AddComponent<Movement>();
-                break;
-        }
+        actorController = actorMain.AddComponent<Movement>();
 
 
         SetupMesh();
@@ -63,7 +55,8 @@ public class Actor
     /// </summary>
     protected virtual void BuildStateMachine()
     {
-        
+        stateMachine.AddState(State.StateID.Idle, new Idle(this, actorController));
+        stateMachine.AddState(State.StateID.Wander, new Wander(this, actorController));
     }
 
     protected virtual void BuildSensoryData()
@@ -89,16 +82,6 @@ public class Actor
             hearingObj.transform.position = actorMain.transform.position;
             sensory.Add(hearingObj);
         }
-
-        if(actorStats.stats.race.smell > 0)
-        {
-            GameObject smellObj = new GameObject("Smell");
-            Smell smell = smellObj.AddComponent<Smell>();
-            smell.InitializeSense(actorStats.stats.race.smell, 45, this);
-            smellObj.transform.SetParent(actorMain.transform);
-            smellObj.transform.position = actorMain.transform.position;
-            sensory.Add(smellObj);
-        }
     }
 
     protected virtual void AddColliders()
@@ -121,6 +104,7 @@ public class Actor
         actorMesh.mesh = actorStats.stats.race.baseMesh;
         actorRender.material = AIManager.ActorManager.baseMaterial;
         actorRender.material.mainTexture = actorStats.stats.race.skins[0];
+        actorRender.material.color = actorStats.stats.race.colorTone;
 
         //Temp stuff, until actual models are put in.
         actorModel.transform.position += Vector3.up * actorStats.stats.race.height;

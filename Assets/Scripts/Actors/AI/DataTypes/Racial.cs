@@ -6,7 +6,7 @@ using UnityEngine;
 public class Racial : ScriptableObject
 {
     public string raceName;
-    public RaceType raceType;
+    public Racial baseRace;
 
     public float baseMoveSpeed;
     public float height;
@@ -14,20 +14,10 @@ public class Racial : ScriptableObject
 
     public Mesh baseMesh;
     public Texture[] skins;
+    public Color colorTone;
 
     public string[] genericNames;
 
     public float sight;
     public float hearing;
-    public float smell;
-
-    public enum RaceType
-    {
-        Normal,
-        Undead,
-        Demon,
-        Fairy
-    }
-
-    
 }

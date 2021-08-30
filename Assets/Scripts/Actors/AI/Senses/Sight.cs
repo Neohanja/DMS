@@ -24,7 +24,7 @@ public class Sight : Sense
 
             if (otherActor != null)
             {
-                Debug.Log(transform.parent.gameObject.name + " sees " + other.gameObject.name + "!");
+                
             }
         }
     }

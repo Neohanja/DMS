@@ -7,8 +7,8 @@ public class PMovement : MonoBehaviour
     public static PMovement Player;
     
     [SerializeField] protected Transform cam;
-
     public float moveSpeed;
+    public TaskManager playerTasks;
 
 
     private void Awake()
@@ -20,6 +20,7 @@ public class PMovement : MonoBehaviour
 
         Player = this;
         cam = GetComponentInChildren<Camera>().transform;
+        playerTasks = gameObject.AddComponent<TaskManager>();
     }
 
     // Start is called before the first frame update

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonIdle : State
+public class Idle : State
 {
-    public MonIdle(Actor identity, Movement movement)
+    public Idle(Actor identity, Movement movement)
     {
         currentState = StateID.Idle;
         actor = identity;

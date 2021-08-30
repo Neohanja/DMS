@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonWander : State
+public class Wander : State
 {
-    public MonWander(Actor identity, Movement movement)
+    public Wander(Actor identity, Movement movement)
     {
         currentState = StateID.Wander;
         actor = identity;

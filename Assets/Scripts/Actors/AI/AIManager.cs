@@ -53,7 +53,12 @@ public class AIManager : MonoBehaviour
                 mID = aiRNG.RandomIndex(int.MaxValue);
             } while (usedIDs.Contains(mID));
 
-            testSubjects.Add(new Monster(CharacterBuilder.Monster(races[mRace], mID, pSpawn, 4)));
+            testSubjects.Add(new Actor(CharacterBuilder.Monster(races[mRace], mID, pSpawn, 4)));
+
+            if(PMovement.Player != null && PMovement.Player.playerTasks != null)
+            {
+                PMovement.Player.playerTasks.AddListener(testSubjects[testSubjects.Count - 1]);
+            }
         }
     }
 
