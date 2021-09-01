@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2682598fe2f9a3f4aa733b21a723b722, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  raceName: Kobold
+  raceName: Slime
   baseRace: {fileID: 0}
   baseMoveSpeed: 1
   height: 0.65

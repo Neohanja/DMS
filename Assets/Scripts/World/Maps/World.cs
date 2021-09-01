@@ -15,6 +15,7 @@ public class World : MonoBehaviour
     public Dictionary<Vector2Int, Chunk> chunkMap;
     protected Dictionary<Vector2Int, List<TileMod>> addChunkMods;
     public List<Chunk> activeChunks;
+    public List<TileMod> moddedTiles;
 
     [Header("Material Settings")]
     public Material terrainMat;
@@ -50,6 +51,7 @@ public class World : MonoBehaviour
         }
 
         chunkMap = new Dictionary<Vector2Int, Chunk>();
+        moddedTiles = new List<TileMod>();
         addChunkMods = new Dictionary<Vector2Int, List<TileMod>>();
         activeChunks = new List<Chunk>();
         worldRNG = new RanGen(worldSeed);
@@ -61,6 +63,7 @@ public class World : MonoBehaviour
         BuildMap();
         RoomJigsaw.BuildStartDungeon(maxRooms);
         AIManager.ActorManager.SetPlayerBase();
+        globalLight = 0.65f;
         Shader.SetGlobalFloat("GlobalLighting", globalLight);
     }
 
@@ -102,15 +105,20 @@ public class World : MonoBehaviour
     {
         List<Vector2Int> chunksToAdd = new List<Vector2Int>();
 
-        for(int i = 0; i < modTile.Count; ++i)
+        for (int i = 0; i < modTile.Count; ++i)
         {
-            if(!chunksToAdd.Contains(modTile[i].chunkID))
+            if (!chunksToAdd.Contains(modTile[i].chunkID))
             {
                 chunksToAdd.Add(modTile[i].chunkID);
                 addChunkMods.Add(modTile[i].chunkID, new List<TileMod>());
             }
 
             addChunkMods[modTile[i].chunkID].Add(modTile[i]);
+
+            if (!debugOn || modTile[i].chunkID.x < 0 || modTile[i].chunkID.y < 0)
+            {
+                moddedTiles.Add(modTile[i]);
+            }
         }
 
         for(int j = 0; j < chunksToAdd.Count; ++j)
@@ -152,6 +160,7 @@ public class World : MonoBehaviour
     {
         if (rebuildMap)
         {
+            moddedTiles.Clear();
             worldRNG = new RanGen(worldSeed);
 
             for (int i = 0; i < activeChunks.Count; ++i)

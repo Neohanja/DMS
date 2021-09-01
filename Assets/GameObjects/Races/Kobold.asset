@@ -17,7 +17,7 @@ MonoBehaviour:
   baseMoveSpeed: 3
   height: 0.45
   width: 0.25
-  baseMesh: {fileID: -6911254234152544556, guid: d28d833ff374ed04ea45024c3ef95bd1, type: 3}
+  baseMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   skins:
   - {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
   colorTone: {r: 0.06711394, g: 0.6320754, b: 0.014907437, a: 0}

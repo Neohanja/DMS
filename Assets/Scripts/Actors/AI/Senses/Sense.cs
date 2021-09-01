@@ -21,6 +21,7 @@ public class Sense : MonoBehaviour
         identity = actor;
 
         myBubble = gameObject.AddComponent<CapsuleCollider>();
+        gameObject.layer = 7;
 
         myBubble.radius = range;
         myBubble.height = range;

@@ -23,6 +23,11 @@ public class PMovement : MonoBehaviour
         playerTasks = gameObject.AddComponent<TaskManager>();
     }
 
+    public Camera GetPlayerCam()
+    {
+        return cam.GetComponent<Camera>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

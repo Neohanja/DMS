@@ -9,13 +9,15 @@ public static class RoomJigsaw
         if (maxRooms <= 0) return;
 
         List<TileMod> addRooms = new List<TileMod>();
+        List<Room> buildRooms = new List<Room>();
 
         int cX = World.WorldMap.chunkSize / 2 - 5;
-        int cY = World.WorldMap.chunkSize / 2 - 5;        
+        int cY = World.WorldMap.chunkSize / 2 - 5;
 
         RoomBlueprint currentRoom = GetRoom(0);
+        buildRooms.Add(new Room(new Vector2Int(cX, cY), currentRoom.roomWidth - 1, currentRoom.roomHeight - 1));
 
-        foreach(BlueprintBlockPlacement block in currentRoom.roomTiles)
+        foreach (BlueprintBlockPlacement block in currentRoom.roomTiles)
         {
             addRooms.Add(new TileMod(new Vector2(cX + block.x, cY + block.y), block.floorTile, block.wallTile, block.wallHeight));
         }
@@ -37,7 +39,7 @@ public static class RoomJigsaw
 
             int rotated = 0;
 
-            while((int)entrances[entryIndex].direction != (int)(exits[exitIndex].direction + 2) % 4)
+            while ((int)entrances[entryIndex].direction != (int)(exits[exitIndex].direction + 2) % 4)
             {
                 roomPoints = RotateRoom(roomPoints, (rotated % 2 == 0) ? nextRoom.roomWidth : nextRoom.roomHeight);
                 entrances = RotateRoom(entrances, (rotated % 2 == 0) ? nextRoom.roomWidth : nextRoom.roomHeight);
@@ -47,7 +49,7 @@ public static class RoomJigsaw
             cX = exits[exitIndex].basePoint.x;
             cY = exits[exitIndex].basePoint.y;
 
-            switch(exits[exitIndex].direction)
+            switch (exits[exitIndex].direction)
             {
                 case Chunk.Direction.North:
                     cY += 1;
@@ -55,7 +57,7 @@ public static class RoomJigsaw
                     break;
                 case Chunk.Direction.East:
                     cY -= entrances[entryIndex].basePoint.y;
-                    cX += 1;                    
+                    cX += 1;
                     break;
                 case Chunk.Direction.South:
                     cY -= (rotated % 2 == 0) ? nextRoom.roomHeight : nextRoom.roomWidth;
@@ -67,6 +69,23 @@ public static class RoomJigsaw
                     break;
             }
 
+            Room testRoom = new Room(new Vector2Int(cX, cY),
+                ((rotated % 2 == 0) ? nextRoom.roomWidth : nextRoom.roomHeight) - 1,
+                ((rotated % 2 == 0) ? nextRoom.roomHeight : nextRoom.roomWidth) - 1);
+            bool useRoom = true;
+
+            foreach (Room existingRoom in buildRooms)
+            {
+                if (existingRoom.WithinBounds(testRoom)) useRoom = false;
+            }
+
+            if (!useRoom)
+            {
+                //i--;
+                Debug.Log("Woops! A room was built on a room.");
+                continue;
+            }
+
             foreach (BlueprintBlockPlacement block in roomPoints)
             {
                 addRooms.Add(new TileMod(new Vector2(cX + block.x, cY + block.y), block.floorTile, block.wallTile, block.wallHeight));
@@ -75,9 +94,9 @@ public static class RoomJigsaw
             entrances.RemoveAt(entryIndex);
             exits.RemoveAt(exitIndex);
 
-            if(entrances.Count > 0)
+            if (entrances.Count > 0)
             {
-                foreach(Pathways addExit in entrances)
+                foreach (Pathways addExit in entrances)
                 {
                     addExit.basePoint.x += cX;
                     addExit.basePoint.y += cY;
@@ -105,7 +124,7 @@ public static class RoomJigsaw
 
     private static List<Pathways> RotateRoom(List<Pathways> points, int width)
     {
-        for(int i = 0; i < points.Count; ++i)
+        for (int i = 0; i < points.Count; ++i)
         {
             points[i].basePoint = RotatePoint(points[i].basePoint, width);
             points[i].direction = (Chunk.Direction)(((int)points[i].direction + 1) % 4);
@@ -118,7 +137,7 @@ public static class RoomJigsaw
     {
         List<BlueprintBlockPlacement> roomPoints = new List<BlueprintBlockPlacement>();
 
-        foreach(BlueprintBlockPlacement block in points)
+        foreach (BlueprintBlockPlacement block in points)
         {
             roomPoints.Add(new BlueprintBlockPlacement(RotatePoint(block.x, block.y, width), block));
         }
@@ -153,11 +172,6 @@ public static class RoomJigsaw
         return exits;
     }
 
-    private static int Roll(int min, int max)
-    {
-        return World.WorldMap.worldRNG.Roll(min, max);
-    }
-
     private static int RandomIndex(int count)
     {
         return World.WorldMap.worldRNG.RandomIndex(count);
@@ -169,16 +183,53 @@ public static class RoomJigsaw
 
         return World.WorldMap.worldGen.pregenRooms[index];
     }
-}
 
-public class Pathways
-{
-    public Chunk.Direction direction;
-    public Vector2Int basePoint;
 
-    public Pathways(Chunk.Direction exitWay, Vector2Int location)
+    private class Pathways
     {
-        direction = exitWay;
-        basePoint = location;
+        public Chunk.Direction direction;
+        public Vector2Int basePoint;
+
+        public Pathways(Chunk.Direction exitWay, Vector2Int location)
+        {
+            direction = exitWay;
+            basePoint = location;
+        }
+    }
+
+    private class Room
+    {
+        int left;
+        int right;
+        int top;
+        int bottom;
+
+        public Room(Vector2Int startPoint, int width, int height)
+        {
+            left = startPoint.x;
+            right = startPoint.x + width;
+            bottom = startPoint.y;
+            top = startPoint.y + height;
+        }
+
+        public bool WithinBounds(Vector2Int point)
+        {
+            return point.x >= left && point.x <= right && point.y >= bottom && point.y <= top;
+        }
+
+        public bool WithinBounds(Room other, int padding = 0)
+        {
+            if (left == right || top == bottom) return false;
+            if (other.left == other.right || other.top == other.bottom) return false;
+
+            return WithinBounds(new Vector2Int(other.left + padding, other.bottom + padding)) ||
+                   WithinBounds(new Vector2Int(other.left + padding, other.top - padding)) ||
+                   WithinBounds(new Vector2Int(other.right - padding, other.bottom + padding)) ||
+                   WithinBounds(new Vector2Int(other.right - padding, other.top - padding)) ||
+                   other.WithinBounds(new Vector2Int(left + padding, bottom + padding)) ||
+                   other.WithinBounds(new Vector2Int(left + padding, top - padding)) ||
+                   other.WithinBounds(new Vector2Int(right - padding, bottom + padding)) ||
+                   other.WithinBounds(new Vector2Int(right - padding, top - padding));
+        }
     }
 }

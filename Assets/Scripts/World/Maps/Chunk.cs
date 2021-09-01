@@ -289,6 +289,8 @@ public class TileMod
     public int x;
     public int y;
     public Vector2Int chunkID;
+    public int oX;
+    public int oY;
     public byte floor;
     public byte wall;
     public int height;
@@ -300,8 +302,10 @@ public class TileMod
 
         chunkID = new Vector2Int(cX, cY);
 
-        x = MathFun.Floor(location.x) - cX * World.WorldMap.chunkSize;
-        y = MathFun.Floor(location.y) - cY * World.WorldMap.chunkSize;
+        x = (int)location.x - cX * World.WorldMap.chunkSize;
+        oX = (int)location.x;
+        y = (int)location.y - cY * World.WorldMap.chunkSize;
+        oY = (int)location.y;
 
         floor = floorID;
         wall = wallID;
