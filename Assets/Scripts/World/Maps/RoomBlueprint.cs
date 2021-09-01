@@ -11,9 +11,6 @@ public class RoomBlueprint : ScriptableObject
 
     public bool saveRoom;
 
-    public byte mainFloor;
-    public byte mainWall;
-
     public List<BlueprintBlockPlacement> roomTiles;
     public List<Vector2Int> entryPoints;
 
@@ -24,7 +21,6 @@ public class RoomBlueprint : ScriptableObject
     private void OnValidate()
     {
         if (roomWidth < 1) roomWidth = 1;
-        if (roomHeight < 1) roomHeight = 1;
 
         if (saveRoom)
         {
@@ -49,18 +45,12 @@ public class BlueprintBlockPlacement : System.IEquatable<BlueprintBlockPlacement
 {
     public int x;
     public int y;
-    public byte floorTile;
-    public byte wallTile;
-    public int wallHeight;
     public int editorIndex;
 
-    public BlueprintBlockPlacement(int xPoint, int yPoint, byte floor, byte wall, int height, int index)
+    public BlueprintBlockPlacement(int xPoint, int yPoint, int index)
     {
         x = xPoint;
         y = yPoint;
-        floorTile = floor;
-        wallTile = wall;
-        wallHeight = height;
         editorIndex = index;
     }
 
@@ -68,23 +58,20 @@ public class BlueprintBlockPlacement : System.IEquatable<BlueprintBlockPlacement
     {
         x = loc.x;
         y = loc.y;
-        floorTile = tile.floorTile;
-        wallTile = tile.wallTile;
-        wallHeight = tile.wallHeight;
         editorIndex = tile.editorIndex;
     }
 
     public BlueprintBlockPlacement(int xPoint, int yPoint) 
-        : this(xPoint, yPoint, 0, 0, 0, 0) { }
-    public BlueprintBlockPlacement(Vector2Int loc, byte floor, byte wall, int height, int index)
-        : this(loc.x, loc.y, floor, wall, height, index) { }
+        : this(xPoint, yPoint, 0) { }
+    public BlueprintBlockPlacement(Vector2Int loc, int index)
+        : this(loc.x, loc.y, index) { }
 
     public int CompareTo(BlueprintBlockPlacement other)
     {
-        if (other.y < y) return 1;
-        if (other.y > y) return -1;
         if (other.x < x) return 1;
         if (other.x > x) return -1;
+        if (other.y < y) return 1;
+        if (other.y > y) return -1;
 
         Debug.Log("Duplicate X/Y coordinates found in Blueprint List");
         return 0;
@@ -93,20 +80,5 @@ public class BlueprintBlockPlacement : System.IEquatable<BlueprintBlockPlacement
     public bool Equals(BlueprintBlockPlacement other)
     {
         return other.x == x && other.y == y;
-    }
-}
-
-[System.Serializable]
-public class RoomPlacement
-{
-    public int startX;
-    public int startY;
-    public RoomBlueprint room;
-
-    public RoomPlacement(int x, int y, RoomBlueprint blueprint)
-    {
-        startX = x; 
-        startY = y;
-        room = blueprint;
     }
 }

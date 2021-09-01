@@ -43,24 +43,10 @@ public class RoomMaker : Editor
 
                 if(newTile != gridTiles[x,y])
                 {
-                    int height = 1;
-                    byte wallTile = blueprint.mainWall;
-                    byte floorTile = blueprint.mainFloor;
-                    
+                    //Special cases
                     switch(newTile)
                     {
-                        case 1:
-                            height = 3;
-                            break;
-                        case 2:
-                            height = 1;
-                            break;
-                        case 3:
-                            wallTile = 5;
-                            height = 2;
-                            break;
                         case 4:
-                            height = 1;
                             if (!blueprint.entryPoints.Contains(new Vector2Int(x, y)))
                                 blueprint.entryPoints.Add(new Vector2Int(x, y));
                             break;
@@ -75,7 +61,7 @@ public class RoomMaker : Editor
                     }
 
                     BlueprintBlockPlacement newBlock =
-                        new BlueprintBlockPlacement(x, y, floorTile, wallTile, height, newTile);
+                        new BlueprintBlockPlacement(x, y, newTile);
 
                     if (newTile == 0) blueprint.roomTiles.RemoveAt(blueprint.roomTiles.IndexOf(newBlock));
                     else if (blueprint.roomTiles.Contains(newBlock)) blueprint.roomTiles[blueprint.roomTiles.IndexOf(newBlock)] = newBlock;
@@ -91,6 +77,6 @@ public class RoomMaker : Editor
 
         GUILayout.Label("\n\nKey:", style, GUILayout.ExpandWidth(true));
         GUILayout.Label("\n0: Void (Empty)\t\t\t4: Entry Point" +
-                        "\n\n1: Wall\n\n2: Floor\n\n3: Flag Base (Decor)");
+                        "\n\n1: Wall\n\n2: Floor\n\n3: Decor Point");
     }
 }

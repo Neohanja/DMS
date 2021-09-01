@@ -61,7 +61,8 @@ public class World : MonoBehaviour
     void Start()
     {
         BuildMap();
-        RoomJigsaw.BuildStartDungeon(maxRooms);
+        Vector2Int startLoc = new Vector2Int(chunkSize / 2, chunkSize / 2);
+        RoomJigsaw.BuildDungeon(startLoc, maxRooms, 6, 7);
         AIManager.ActorManager.SetPlayerBase();
         globalLight = 0.65f;
         Shader.SetGlobalFloat("GlobalLighting", globalLight);
@@ -168,7 +169,8 @@ public class World : MonoBehaviour
                 activeChunks[i].RebuildMe();
             }
 
-            RoomJigsaw.BuildStartDungeon(maxRooms);
+            Vector2Int startLoc = new Vector2Int(chunkSize / 2, chunkSize / 2);
+            RoomJigsaw.BuildDungeon(startLoc, maxRooms, 6, 7);
             rebuildMap = false;
         }
 

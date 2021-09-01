@@ -4,22 +4,32 @@ using UnityEngine;
 
 public static class RoomJigsaw
 {
-    public static void BuildStartDungeon(int maxRooms)
+    private static int wallHeight = 3;
+    private static int floorHeight = 1;
+
+    public static void BuildDungeon(Vector2Int startLoc, int maxRooms, byte wallID, byte floorID)
     {
         if (maxRooms <= 0) return;
 
         List<TileMod> addRooms = new List<TileMod>();
         List<Room> buildRooms = new List<Room>();
 
-        int cX = World.WorldMap.chunkSize / 2 - 5;
-        int cY = World.WorldMap.chunkSize / 2 - 5;
+        int cX = startLoc.x;
+        int cY = startLoc.y;
 
         RoomBlueprint currentRoom = GetRoom(0);
         buildRooms.Add(new Room(new Vector2Int(cX, cY), currentRoom.roomWidth - 1, currentRoom.roomHeight - 1));
 
         foreach (BlueprintBlockPlacement block in currentRoom.roomTiles)
         {
-            addRooms.Add(new TileMod(new Vector2(cX + block.x, cY + block.y), block.floorTile, block.wallTile, block.wallHeight));
+            if (block.editorIndex > 1)
+            {
+                addRooms.Add(new TileMod(new Vector2(cX + block.x, cY + block.y), floorID, wallID, floorHeight));
+            }
+            else
+            {
+                addRooms.Add(new TileMod(new Vector2(cX + block.x, cY + block.y), floorID, wallID, wallHeight));
+            }
         }
 
         List<Pathways> exits = GetExits(new Vector2Int(cX, cY), currentRoom);
@@ -83,12 +93,19 @@ public static class RoomJigsaw
             {
                 //i--;
                 Debug.Log("Woops! A room was built on a room.");
-                continue;
+                //continue;
             }
 
             foreach (BlueprintBlockPlacement block in roomPoints)
             {
-                addRooms.Add(new TileMod(new Vector2(cX + block.x, cY + block.y), block.floorTile, block.wallTile, block.wallHeight));
+                if (block.editorIndex > 1)
+                {
+                    addRooms.Add(new TileMod(new Vector2(cX + block.x, cY + block.y), floorID, wallID, floorHeight));
+                }
+                else
+                {
+                    addRooms.Add(new TileMod(new Vector2(cX + block.x, cY + block.y), floorID, wallID, wallHeight));
+                }
             }
 
             entrances.RemoveAt(entryIndex);
@@ -103,6 +120,16 @@ public static class RoomJigsaw
 
                     exits.Add(addExit);
                 }
+            }
+        }
+
+        for(int i = 0; i < exits.Count; ++i)
+        {
+            TileMod checkTile = new TileMod(exits[i].basePoint, floorID, wallID, wallHeight);
+            if(addRooms.Contains(checkTile))
+            {
+                int index = addRooms.IndexOf(checkTile);
+                addRooms[index].height = checkTile.height;
             }
         }
 

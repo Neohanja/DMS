@@ -37,7 +37,7 @@ public class AIManager : MonoBehaviour
 
     public void SetPlayerBase()
     {
-        Vector2Int pSpawn = new Vector2Int(World.WorldMap.chunkSize / 2 - 1, World.WorldMap.chunkSize / 2 - 1);
+        Vector2Int pSpawn = new Vector2Int(World.WorldMap.chunkSize / 2 + 4, World.WorldMap.chunkSize / 2 + 4);
         List<TileMod> playerRoom = new List<TileMod>();
         playerRoom.Add(new TileMod(pSpawn, 7, 5, 2));
         World.WorldMap.ModTile(playerRoom);

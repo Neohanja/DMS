@@ -83,17 +83,16 @@ public static class MathFun
             return (int)(System.DateTime.UtcNow - epochTime).TotalSeconds;
         }
     }
-}
 
-[System.Serializable]
-public class MinMax
-{
-    public int min;
-    public int max;
-
-    public MinMax(int a, int b)
+    public class MinMax
     {
-        min = (a <= b) ? a : b;
-        max = (a <= b) ? b : a;
+        public int min;
+        public int max;
+
+        public MinMax(int a, int b)
+        {
+            min = (a <= b) ? a : b;
+            max = (a <= b) ? b : a;
+        }
     }
 }

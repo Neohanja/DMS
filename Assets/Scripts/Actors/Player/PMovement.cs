@@ -39,14 +39,22 @@ public class PMovement : MonoBehaviour
     {
         float sideMove = Input.GetAxis("Horizontal");
         float forwardMove = Input.GetAxis("Vertical");
+        float swivel = 0f;
 
         if(Input.GetMouseButton(1))
         {
-            float swivel = Input.GetAxis("Mouse X");
-
-            transform.Rotate(new Vector3(0, swivel, 0));
+            swivel = Input.GetAxis("Mouse X");
+        }
+        else if(Input.GetKey(KeyCode.Comma))
+        {
+            swivel = -0.5f;
+        }
+        else if(Input.GetKey(KeyCode.Period))
+        {
+            swivel = 0.5f;
         }
 
+        transform.Rotate(new Vector3(0, swivel, 0));
         transform.position += ((transform.forward * forwardMove) + (transform.right * sideMove)) * moveSpeed * Time.deltaTime;
     }
 }

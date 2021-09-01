@@ -284,7 +284,7 @@ public class Chunk
 }
 
 [System.Serializable]
-public class TileMod
+public class TileMod : System.IComparable<TileMod>, System.IEquatable<TileMod>
 {
     public int x;
     public int y;
@@ -310,5 +310,25 @@ public class TileMod
         floor = floorID;
         wall = wallID;
         height = heightLevel;
+    }
+
+    public int CompareTo(TileMod other)
+    {
+        if (other.chunkID.x < chunkID.x) return 1;
+        if (other.chunkID.x > chunkID.x) return -1;
+        if (other.chunkID.y < chunkID.y) return 1;
+        if (other.chunkID.y > chunkID.y) return -1;
+        if (other.x < x) return 1;
+        if (other.x > x) return -1;
+        if (other.y < y) return 1;
+        if (other.y > y) return -1;
+        return 0;
+    }
+
+    public bool Equals(TileMod other)
+    {
+        return chunkID.x == other.chunkID.x &&
+               chunkID.y == other.chunkID.y &&
+               x == other.x && y == other.y;
     }
 }
