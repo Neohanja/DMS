@@ -21,22 +21,22 @@ public class AStar
         openList = new List<ANode>();
     }
 
-    public bool BuildPath(Vector3 start, Vector3 end)
+    public bool BuildPath(Vector3 start, Vector3 end, bool includeEndRegardless)
     {
         Vector2Int startPoint = new Vector2Int(MathFun.Floor(start.x), MathFun.Floor(start.z));
         Vector2Int destination = new Vector2Int(MathFun.Floor(end.x), MathFun.Floor(end.z));
         
-        path = FindPath(startPoint, destination);
+        path = FindPath(startPoint, destination, includeEndRegardless);
         return !(path == null);
     }
 
-    public bool BuildPath(Vector2Int start, Vector2Int end)
+    public bool BuildPath(Vector2Int start, Vector2Int end, bool includeEndRegardless)
     {
-        path = FindPath(start, end);
+        path = FindPath(start, end, includeEndRegardless);
         return !(path == null);
     }
 
-    protected List<Vector2Int> FindPath(Vector2Int beginPoint, Vector2Int endPoint)
+    protected List<Vector2Int> FindPath(Vector2Int beginPoint, Vector2Int endPoint, bool includeEndRegardless)
     {
         ANode start = new ANode(null, endPoint, beginPoint, 0);
         openList.Clear();
@@ -68,7 +68,7 @@ public class AStar
             openList.Remove(currentNode);
             nodeCosts.Remove(currentNode.location);
 
-            foreach (ANode possibleNode in GetNeighbors(currentNode, endPoint))
+            foreach (ANode possibleNode in GetNeighbors(currentNode, endPoint, includeEndRegardless))
             {
                 if (nodeStatus.ContainsKey(possibleNode.location))
                 {
@@ -107,7 +107,9 @@ public class AStar
         else nodeStatus.Add(node.location, NodeStatus.Open);
     }
 
-    protected List<ANode> GetNeighbors(ANode node, Vector2Int goal)
+    //IER = Include Ending Regardless
+
+    protected List<ANode> GetNeighbors(ANode node, Vector2Int goal, bool IER)
     {
         int x = node.location.x;
         int y = node.location.y;
@@ -131,42 +133,42 @@ public class AStar
         Nesw[6] = Nesw[6] && Nesw[2] && Nesw[1];
         Nesw[7] = Nesw[7] && Nesw[2] && Nesw[3];
 
-        if (Nesw[0])
+        if (Nesw[0] || (IER && new Vector2Int(x, y+1) == goal))
         {
             list.Add(new ANode(node, goal, new Vector2Int(x, y + 1), StraightCost + node.directCost));
         }
 
-        if (Nesw[1])
+        if (Nesw[1] || (IER && new Vector2Int(x + 1, y) == goal))
         {
             list.Add(new ANode(node, goal, new Vector2Int(x + 1, y), StraightCost + node.directCost));
         }
 
-        if (Nesw[2])
+        if (Nesw[2] || (IER && new Vector2Int(x, y - 1) == goal))
         {
             list.Add(new ANode(node, goal, new Vector2Int(x, y - 1), StraightCost + node.directCost));
         }
 
-        if (Nesw[3])
+        if (Nesw[3] || (IER && new Vector2Int(x - 1, y) == goal))
         {
             list.Add(new ANode(node, goal, new Vector2Int(x - 1, y), StraightCost + node.directCost));
         }
 
-        if (Nesw[4])
+        if (Nesw[4])// || (IER && new Vector2Int(x - 1, y + 1) == goal)) <---Diagonal
         {
             list.Add(new ANode(node, goal, new Vector2Int(x - 1, y + 1), DiagonalCost + node.directCost));
         }
 
-        if (Nesw[5])
+        if (Nesw[5])// || (IER && new Vector2Int(x + 1, y + 1) == goal)) <---Diagonal
         {
             list.Add(new ANode(node, goal, new Vector2Int(x + 1, y + 1), DiagonalCost + node.directCost));
         }
 
-        if (Nesw[6])
+        if (Nesw[6])// || (IER && new Vector2Int(x + 1, y - 1) == goal)) <---Diagonal
         {
             list.Add(new ANode(node, goal, new Vector2Int(x + 1, y - 1), DiagonalCost + node.directCost));
         }
 
-        if (Nesw[7])
+        if (Nesw[7])// || (IER && new Vector2Int(x - 1, y - 1) == goal)) <---Diagonal
         {
             list.Add(new ANode(node, goal, new Vector2Int(x - 1, y - 1), DiagonalCost + node.directCost));
         }

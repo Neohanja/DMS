@@ -35,6 +35,24 @@ public class StateManager : MonoBehaviour
         stateLibrary[currentState].Activities();
     }
 
+    public void GiveTask(Vector2Int location)
+    {
+        if (stateLibrary.ContainsKey(State.StateID.Working))
+        {
+            stateLibrary[State.StateID.Working].SetDestination(location);
+            currentState = State.StateID.Working;
+        }
+        else
+        {
+            Debug.Log(gameObject.name + " does not have a work function.");
+        }
+    }
+
+    public void CancelTask()
+    {
+        currentState = State.StateID.Idle;        
+    }
+
     public void AddState(State.StateID addedState, State newState)
     {
         if (stateLibrary == null)

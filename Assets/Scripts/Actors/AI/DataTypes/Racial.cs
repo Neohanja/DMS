@@ -20,4 +20,6 @@ public class Racial : ScriptableObject
 
     public float sight;
     public float hearing;
+
+    public List<CursorIcons.TaskList> availableTasks;
 }

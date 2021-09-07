@@ -41,6 +41,11 @@ public abstract class State
         controller.RebuildPathfinding(destination);
     }
 
+    public void SetDestination(Vector2Int point)
+    {
+        destination = point;
+    }
+
     public Vector3 RandomDirection()
     {
         int quad = actor.Roll(1, 4);
@@ -71,6 +76,7 @@ public abstract class State
     {
         None,
         Idle,
-        Wander
+        Wander,
+        Working
     }
 }

@@ -53,12 +53,8 @@ public class AIManager : MonoBehaviour
                 mID = aiRNG.RandomIndex(int.MaxValue);
             } while (usedIDs.Contains(mID));
 
-            testSubjects.Add(new Actor(CharacterBuilder.Monster(races[mRace], mID, pSpawn, 4)));
-
-            if(PMovement.Player != null && PMovement.Player.playerTasks != null)
-            {
-                PMovement.Player.playerTasks.AddListener(testSubjects[testSubjects.Count - 1]);
-            }
+            testSubjects.Add(new Actor(CharacterBuilder.Monster(races[mRace], mID, pSpawn, 4), PMovement.Player.playerTasks));
+            PMovement.Player.playerTasks.AddListener(testSubjects[testSubjects.Count - 1]);
         }
     }
 
@@ -70,12 +66,12 @@ public class AIManager : MonoBehaviour
 
     public bool SpaceOccupied(int x, int y)
     {
-        for(int m = 0; m < testSubjects.Count; ++m)
+        /*for(int m = 0; m < testSubjects.Count; ++m)
         {
             int mX = MathFun.Floor(testSubjects[m].actorMain.transform.position.x);
             int mY = MathFun.Floor(testSubjects[m].actorMain.transform.position.z);
             if (x == mX && y == mY) return true;
-        }
+        }*/
 
         return World.WorldMap.LocationBlocked(x, 1, y);
     }

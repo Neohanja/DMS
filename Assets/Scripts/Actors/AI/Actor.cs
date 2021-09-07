@@ -22,12 +22,13 @@ public class Actor
     protected RanGen actorRNG;
     protected ActorType actorType;
 
-    protected bool busy;
-    public bool IsBusy { get { return busy; } }
+    public bool IsBusy { get { return stateMachine.currentState == State.StateID.Working; } }
+    protected TaskManager.TaskListing currentTask;
+    protected TaskManager taskManager;
 
-    public Actor(ActorStats characterSheet)
+    public Actor(ActorStats characterSheet, TaskManager taskMaker)
     {
-        //stats = characterSheet;        
+        taskManager = taskMaker;
 
         actorRNG = new RanGen(characterSheet.seed);
         actorType = (ActorType)characterSheet.actorType;
@@ -39,7 +40,6 @@ public class Actor
         stateMachine = actorMain.AddComponent<StateManager>();
         actorController = actorMain.AddComponent<Movement>();
 
-
         SetupMesh();
 
         actorController.SetSpawn(actorStats.stats.SpawnPoint);
@@ -50,6 +50,35 @@ public class Actor
         BuildSensoryData();
     }
 
+    public bool AssignTask(TaskManager.TaskListing giveTask)
+    {
+        if (!actorStats.stats.race.availableTasks.Contains((CursorIcons.TaskList)giveTask.taskID + 1))
+            return false;
+
+        if (!actorController.CheckWorkPath(giveTask.location))
+            return false;
+        stateMachine.GiveTask(giveTask.location);
+        currentTask = giveTask;
+        return true;
+    }
+
+    public void CancelTask()
+    {
+        currentTask = null;
+        stateMachine.CancelTask();
+    }
+
+    public void CompleteTask()
+    {
+        taskManager.ReportCompletion(currentTask);
+        currentTask = null;
+    }
+
+    public TaskManager.TaskListing WhatsMyTask()
+    {
+        return currentTask;
+    }
+
     /// <summary>
     /// Where the individual actor types add their state machine libraries
     /// </summary>
@@ -57,6 +86,7 @@ public class Actor
     {
         stateMachine.AddState(State.StateID.Idle, new Idle(this, actorController));
         stateMachine.AddState(State.StateID.Wander, new Wander(this, actorController));
+        stateMachine.AddState(State.StateID.Working, new Working(this, actorController));
     }
 
     protected virtual void BuildSensoryData()
@@ -92,6 +122,7 @@ public class Actor
         actorRigidbody.constraints = (RigidbodyConstraints)116;
         actorCollision.radius = 0.25f;
         actorCollision.center = new Vector3(0f, 0.5f, 0f);
+        actorCollision.isTrigger = true;
     }
 
     protected virtual void SetupMesh()

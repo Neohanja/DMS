@@ -198,6 +198,12 @@ public class Chunk
         return chunkData[x, y];
     }
 
+    public void ModTile(TileMod tileMod)
+    {
+        chunkData[tileMod.x, tileMod.y].ChangedTile(tileMod.floor, tileMod.wall, tileMod.height);
+        BuildChunkMesh();
+    }
+
     public void ModTiles(List<TileMod> tileMods)
     {
         for(int m = 0; m < tileMods.Count; ++m)

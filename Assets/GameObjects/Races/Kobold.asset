@@ -57,3 +57,4 @@ MonoBehaviour:
   - Staubsauger
   sight: 5
   hearing: 3
+  availableTasks: 0100000003000000

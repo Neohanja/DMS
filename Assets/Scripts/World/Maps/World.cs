@@ -102,6 +102,33 @@ public class World : MonoBehaviour
         return Chunk.ChunkType.Underground;
     }
 
+    public int GetHeight(Vector3Int location)
+    {
+        return GetTile(location).GetHeight;
+    }
+
+    public byte GetBlock(Vector3Int location)
+    {
+        return GetTile(location).GetTile(location.y);
+    }
+
+    public ChunkTile GetTile(Vector3Int location)
+    {
+        Vector2Int chunkID = new Vector2Int(location.x / chunkSize, location.z / chunkSize);
+
+        if (!chunkMap.ContainsKey(chunkID)) return null;
+
+        return chunkMap[chunkID].GetFullTileData(location.x - chunkID.x * chunkSize, location.z - chunkID.y * chunkSize);
+    }
+
+    public void ModTile(TileMod modTile)
+    {
+        if(chunkMap.ContainsKey(modTile.chunkID))
+        {
+            chunkMap[modTile.chunkID].ModTile(modTile);
+        }
+    }
+
     public void ModTile(List<TileMod> modTile)
     {
         List<Vector2Int> chunksToAdd = new List<Vector2Int>();

@@ -40,3 +40,4 @@ MonoBehaviour:
   - Rain
   sight: 1
   hearing: 5
+  availableTasks: 02000000

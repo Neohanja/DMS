@@ -27,10 +27,37 @@ public class Movement : MonoBehaviour
         
     }
 
-    public void RebuildPathfinding(Vector2Int destination)
+    public void RebuildPathfinding(Vector2Int destination, bool forceIncludeEnding = false)
     {
-        pathfinder.BuildPath(MyLocation(), destination);
+        pathfinder.BuildPath(MyLocation(), destination, forceIncludeEnding);
         pathIndex = 0;
+    }
+
+    public bool CheckWorkPath(Vector2Int destination)
+    {
+        AStar testPath = new AStar();
+
+        if(!testPath.BuildPath(MyLocation(), destination, true))
+        {
+            return false;
+        }
+
+        pathIndex = 0;
+        pathfinder.BuildPath(MyLocation(), destination, true);
+        return true;
+    }
+
+    public bool AtWorkSite(Vector2Int desitination)
+    {
+        Vector3 myLocation = transform.position;
+        Vector3 nextPoint = GetPoint();
+
+        if (Vector3.Distance(myLocation, nextPoint) <= 0.2f)
+        {
+            return pathfinder.CheckPoint(pathIndex + 1, MyLocation()) == desitination;
+        }
+
+        return false;
     }
 
     public bool PathAvailable()
@@ -43,7 +70,7 @@ public class Movement : MonoBehaviour
         Vector3 myLocation = transform.position;
         Vector3 nextPoint = GetPoint();
 
-        if(Vector3.Distance(myLocation, nextPoint) <= 0.3f)
+        if(Vector3.Distance(myLocation, nextPoint) <= 0.2f)
         {
             pathIndex++;
             nextPoint = GetPoint();
