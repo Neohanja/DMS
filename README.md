@@ -9,7 +9,7 @@ o Create spawn locations for player/Enemy factions
 
 o Build faction systems
 
-o AI interacting with environment
+o AI interacting with environment : Able to mine/Build - Need more options next.
 
 o Build/Destroy/Craft system
 
