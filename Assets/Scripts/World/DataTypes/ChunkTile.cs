@@ -37,13 +37,14 @@ public class ChunkTile
     {
         get
         {
+            if (wallID == 0) return 1;
             return height;
         }
     }
 
     public byte GetTile(int y)
     {
-        if (y == 0) return floorID;
+        if (y <= 0) return floorID;
         if (y < height) return wallID;
         return 0;
     }
